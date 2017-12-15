@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>Ajouter une tâche</title>
+</head>
+<body>
+	<nav th:replace="~{fragments::menu('ajouter-tache')}"></nav>
+
+	<div id="blockFormulaire">
+		<div id="blockInterieur">
+			<form method="post">
+				<p>
+					<label for="titre">Titre de la tâche :</label>
+					<input type="text" name="titre" id="titre" placeholder="Ex: Répondre à mes mails" size="50" maxlength="45" required>
+				</p>
+				<p>
+					<label for="description">Description :</label>
+					<textarea name="description" id="description"></textarea>
+				</p>
+				<p>
+					<label for="dateTache" >Date et heure de début :</label><br>
+					<input type="date" name="dateTache" id="dateTache" required>
+					<input type="time" name="heureTache" id="heureTache" required>
+				</p>
+				<p>
+					<label for="heureTache" >Durée de la tâche :</label><br>
+					<input type="time" name="dureeTache" id="dureeTache" required>
+				</p>
+				<p>
+					<label for="categorie">La tâche est : </label>
+					<select class="categorie" name="categorie" id="categorie">
+						<option th:each="categorie : ${categoryList}" th:value="${categorie.id_category}" th:text="${categorie.name_category}">Privé</option>
+					</select>
+
+				</p>
+
+				<p>
+
+				</p>
+				<p>
+					<input type="submit" name="submitTache" value="Ajouter" id="envoiForm">
+				</p>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

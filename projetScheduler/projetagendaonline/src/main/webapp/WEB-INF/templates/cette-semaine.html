@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Cette Semaine</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Liste des tâches</title>
+</head>
+<body>
+
+	<nav th:replace="~{fragments::menu('cette-semaine')}"></nav>
+
+	<div id="blockFleches">
+	</div>
+
+	<div id="colDates">
+		<div class="showDate" th:each="LocalDate : ${listeDates}">
+			<p th:text="${LocalDate}">09/10/2017</p>
+		</div>
+	</div>
+
+	<div id="blockTaches">
+		<div class="colTaches">
+			<div class="singleTache" th:each="task : ${list1}" th:bgcolor="${task.category.getColor()}">
+				<h2 th:bgcolor="${task.category.color}" th:text="${task.name}">Rendre devoir Anglais</h2>
+				<p th:text="${task.start_time}">18h00 à 19h30</p>
+			</div>
+		</div>
+		<div class="colTaches">
+			<div class="singleTache" th:each="task : ${list2}" th:bgcolor="${task.category.color}">
+				<h2 th:text="${task.name}">Rendre devoir Anglais</h2>
+				<p th:text="${task.start_time}">18h00 à 19h30</p>
+			</div>
+			
+		</div>
+		<div class="colTaches">
+			<div class="singleTache" th:each="task : ${list3}">
+				<h2 th:text="${task.name}">Envoyer CV à la JE</h2>
+				<p th:text="${task.start_time}">8h00 à 20h00</p>
+			</div>
+		</div>
+		<div class="colTaches">
+			<div class="singleTache" th:each="task : ${list4}">
+				<h2 th:text="${task.name}">Rdv client projet 100h</h2>
+				<p th:text="${task.start_time}">15h30 à 17h00</p>
+			</div>
+		</div>
+		<div class="colTaches">
+			<div class="singleTache" th:each="task : ${list5}">
+				<h2 th:text="${task.name}">Rdv client projet 100h</h2>
+				<p th:text="${task.start_time}">15h30 à 17h00</p>
+			</div>
+		</div>
+		<div class="colTaches">
+			<div class="singleTache" th:each="task : ${list6}">
+				<h2 th:text="${task.name}">Faire le powerpoint ethique</h2>
+				<p th:text="${task.start_time}">08h00 à 20h00</p>
+			</div>
+			
+		</div>
+		<div class="colTaches">
+			<div class="singleTache" th:each="task : ${list7}">
+				<h2 th:text="${task.name}">Rdv client projet 100h</h2>
+				<p th:text="${task.start_time}">15h30 à 17h00</p>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

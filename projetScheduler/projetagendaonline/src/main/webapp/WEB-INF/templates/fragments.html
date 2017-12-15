@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragments</title>
+</head>
+<body>
+
+<nav th:fragment="menu(currentPage)">
+    <ul>
+        <a th:class="${currentPage == 'index'} ? 'active' : ''" href="index"><li>Accueil</li></a>
+        <a th:class="${currentPage == 'ajouter-tache'} ? 'active' : ''" href="AddTask"><li>Ajouter une tâche</li></a>
+        <a th:class="${currentPage == 'liste'} ? 'active' : ''" href="list"><li>Liste des tâches</li></a>
+        <a th:class="${currentPage == 'cette-semaine'} ? 'active' : ''" href="semaine"><li>Cette semaine</li></a>
+    </ul>
+</nav>
+
+</body>
+</html>

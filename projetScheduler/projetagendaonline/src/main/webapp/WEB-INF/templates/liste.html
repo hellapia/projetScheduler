@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/main.js" type="text/javascript"></script>
+    <title>Liste des tâches</title>
+</head>
+<body>
+<nav th:replace="~{fragments::menu('liste')}"></nav>
+
+<div id="blockTableau">
+    <table id="tableauTasks">
+        <tbody id="tabBody">
+        <tr>
+            <th class="colDate">Date</th>
+            <th>Titre</th>
+            <th class="colAction">Action</th>
+        </tr>
+        <tr th:each="task : ${taskList}" th:id="ligne+ ${task.id}">
+            <td class="colDate" th:text="${task.start_date}">09/10/2017</td>
+            <td class="colTitre" th:text="${task.name}"></td>
+            <td class="colAction"><a th:href="${'task?id='+task.id}"><i class="fa fa-search" aria-hidden="true"></i>
+            </a><a th:href="${'editTask?id='+task.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a><i
+                    class="fa fa-trash" th:id="${task.id}" aria-hidden="true"></i></td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+</body>

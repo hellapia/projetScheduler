@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>Liste des tâches</title>
+</head>
+<body>
+	<nav th:replace="~{fragments::menu('liste')}"></nav>
+
+	<div id="blockFormulaire">
+		<div id="blockInterieur">
+			<form method="post">
+				<p th>
+					<label for="titre">Titre de la tâche :</label>
+					<input type="text" name="titre" id="titre" th:value="${task.name}" size="50" maxlength="45" >
+				</p>
+				<p>
+					<label for="description">Description :</label>
+					<textarea name="description" id="description" th:text="${task.description}"></textarea>
+				</p>
+				<p>
+					<label for="dateTache" >Date et heure de début :</label><br>
+					<input type="date" name="dateTache" id="dateTache" th:value="${task.start_date}" required>
+					<input type="time" name="heureTache" id="heureTache" th:value="${task.start_time}" required>
+				</p>
+				<p>
+					<label for="heureTache" >Durée de la tâche :</label><br>
+					<input type="time" name="dureeTache" id="dureeTache" th:value="${task.duration}">
+				</p>
+				<p>
+					<label for="categorie">La tâche est : </label>
+					<select class="categorie" name="categorie" id="categorie" >
+						<option th:each="categorie : ${categoryList}" th:value="${categorie.id_category}" th:text="${categorie.name_category}" th:selected="${task.category.id_category} == ${categorie.id_category}">Privé</option>
+					</select>
+
+				</p>
+				<p>
+					<a href="list"> <input type="button" value="Annuler" id="annulerForm"></a>
+					<input type="submit" name="submitTache" value="Valider" id="validerForm">
+				</p>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
